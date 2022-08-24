@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 256mm;
+    outline: 2cm #FFEAEA solid;
+}
+
+@page {
+    size: 5 in 8 in /* . Random dot? */;
+}
+@media print {
+    html, body {
+        width: 5 in; /* was 8.5in */
+        height: 8 in; /* was 5.5in */
+        display: block;
+        font-family: "Arial";
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+td,
+th,
+tr,
+table {
+    border-collapse: collapse;
+}
