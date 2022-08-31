@@ -25,7 +25,7 @@ class Jurnal extends CI_Controller{
             $data['menu'] = 'jurnal';
             $data['pmasuk']  = 'Jurnal';
             $data['diskripsi']  = 'Tabel Jurnal Pembantu Menampilkan Total Input Data';
-            $this->load->view('admin/v_Jurnal',$data);
+            $this->load->view('admin/v_jurnal',$data);
         }else{
             echo "Halaman tidak ditemukan";
         }
