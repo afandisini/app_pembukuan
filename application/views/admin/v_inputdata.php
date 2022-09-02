@@ -22,10 +22,10 @@
                                         <tr>
                                             <th style="width:45px;">No</th>
                                             <th>Tgl Input</th>
-                                            <th>Nama</th>
+                                            <th>Jenis Input</th>
                                             <th>Keterangan</th>
-                                            <th>Instansi / Client</th>
-                                            <th>Jenis Kegiatan</th>
+                                            <th>dari / untuk</th>
+                                            <th>Nama Kegiatan</th>
                                             <th>Debet</th>
                                             <th>Kredit</th>
                                             <th>Aksi</th>
