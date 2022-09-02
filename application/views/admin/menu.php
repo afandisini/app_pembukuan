@@ -5,7 +5,7 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url().'admin/dasbor'?>" title="Kembali ke Dasbor" role="button"><?php if($menu == 'dasbor'){ echo '<i class="fal fa-tachometer-alt mr-1"></i>';}?><?php if($menu == 'kategori'){ echo '<i class="fal fa-network-wired mr-1"></i>';}?><?php if($menu == 'cetak'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'cetakfaktur'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'rekanan'){ echo '<i class="fal fa-user-plus mr-1"></i>';}?><?php if($menu == 'inputdata'){ echo '<i class="fal fa-sign-in-alt mr-1"></i>';}?><?php if($menu == 'piutang'){ echo '<i class="fal fa-file-invoice mr-1"></i>';}?><?php if($menu == 'jurnal'){ echo '<i class="fal fa-table mr-1"></i>';}?><?php if($menu == 'rekap'){ echo '<i class="fal fa-chart-line mr-1"></i>';}?><?php if($menu == 'cetaknota'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'barang'){ echo '<i class="fal fa-boxes mr-1"></i>';}?><?php if($menu == 'penggunaan'){ echo '<i class="fal fa-user-clock mr-1"></i>';}?><?php if($menu == 'pengguna'){ echo '<i class="fal fa-user-unlock mr-1"></i>';}?><?php if($menu == 'pengaturan'){ echo '<i class="fal fa-cog mr-1"></i>';}?><?php echo isset($nmpage) ? $nmpage : '<i class="fal fa-print mr-1"></i> Cetak Faktur'; ?></a>
+          <a class="nav-link" href="<?php echo base_url().'admin/dasbor'?>" title="Kembali ke Dasbor" role="button"><?php if($menu == 'dasbor'){ echo '<i class="fal fa-tachometer-alt mr-1"></i>';}?><?php if($menu == 'kategori'){ echo '<i class="fal fa-network-wired mr-1"></i>';}?><?php if($menu == 'cetak'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'cetakfaktur'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'rekanan'){ echo '<i class="fal fa-user-plus mr-1"></i>';}?><?php if($menu == 'kegiatan'){ echo '<i class="fal fa-user-hard-hat mr-1"></i>';}?><?php if($menu == 'inputdata'){ echo '<i class="fal fa-sign-in-alt mr-1"></i>';}?><?php if($menu == 'piutang'){ echo '<i class="fal fa-file-invoice mr-1"></i>';}?><?php if($menu == 'jurnal'){ echo '<i class="fal fa-table mr-1"></i>';}?><?php if($menu == 'rekap'){ echo '<i class="fal fa-chart-line mr-1"></i>';}?><?php if($menu == 'cetaknota'){ echo '<i class="fal fa-print mr-1"></i>';}?><?php if($menu == 'barang'){ echo '<i class="fal fa-boxes mr-1"></i>';}?><?php if($menu == 'penggunaan'){ echo '<i class="fal fa-user-clock mr-1"></i>';}?><?php if($menu == 'pengguna'){ echo '<i class="fal fa-user-unlock mr-1"></i>';}?><?php if($menu == 'pengaturan'){ echo '<i class="fal fa-cog mr-1"></i>';}?><?php echo isset($nmpage) ? $nmpage : '<i class="fal fa-print mr-1"></i> Cetak Faktur'; ?></a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -56,14 +56,20 @@
         <div class="sidebar">
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column m-0" data-widget="treeview" role="menu" data-accordion="false">
-              <li class="nav-item <?php if($menu == 'inputdata'){ echo 'menu-open';}?><?php if($menu == 'piutang'){ echo 'menu-open';}?><?php if($menu == 'jurnal'){ echo 'menu-open';}?><?php if($menu == 'rekap'){ echo 'menu-open';}?><?php if($menu == 'cetaknota'){ echo 'menu-open';}?>">
-                <a href="#" class="nav-link <?php if($menu == 'inputdata'){ echo 'active';}?><?php if($menu == 'piutang'){ echo 'active';}?><?php if($menu == 'jurnal'){ echo 'active';}?><?php if($menu == 'rekap'){ echo 'active';}?>">
+              <li class="nav-item <?php if($menu == 'kegiatan'){ echo 'menu-open';}?><?php if($menu == 'inputdata'){ echo 'menu-open';}?><?php if($menu == 'piutang'){ echo 'menu-open';}?><?php if($menu == 'jurnal'){ echo 'menu-open';}?><?php if($menu == 'rekap'){ echo 'menu-open';}?><?php if($menu == 'cetaknota'){ echo 'menu-open';}?>">
+                <a href="#" class="nav-link <?php if($menu == 'kegiatan'){ echo 'active';}?><?php if($menu == 'inputdata'){ echo 'active';}?><?php if($menu == 'piutang'){ echo 'active';}?><?php if($menu == 'jurnal'){ echo 'active';}?><?php if($menu == 'rekap'){ echo 'active';}?>">
                   <i class="fal fa-book mr-1"></i>
                   <p>PEMBUKUAN <i class="right fal fa-angle-left"></i>
                   </p>
                 </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-header">INPUT</li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'admin/kegiatan'?>" class="nav-link <?php if($menu == 'kegiatan'){ echo 'active';}?>">
+                      <i class="fal fa-user-hard-hat mr-1"></i>
+                        <p>Kegiatan</p>
+                      </a>
+                    </li>
                     <li class="nav-item">
                       <a href="<?php echo base_url().'admin/inputdata'?>" class="nav-link <?php if($menu == 'inputdata'){ echo 'active';}?>">
                       <i class="fal fa-sign-in-alt mr-1"></i>

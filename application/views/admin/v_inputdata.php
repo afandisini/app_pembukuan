@@ -24,8 +24,9 @@
                                             <th>Tgl Input</th>
                                             <th>Jenis Input</th>
                                             <th>Keterangan</th>
-                                            <th>dari / untuk</th>
+                                            <th>Dari/Untuk</th>
                                             <th>Nama Kegiatan</th>
+                                            <th>Instansi/OPD</th>
                                             <th>Debet</th>
                                             <th>Kredit</th>
                                             <th>Aksi</th>
@@ -39,13 +40,14 @@
                                             <th></th>
                                             <th></th>
                                             <th></th>
+                                            <th></th>
                                             <th>Total: <span class="text-xs">(Per Halaman)</span></th>
                                             <th></th>
                                             <th></th>
                                             <th></th>
                                         </tr>
                                         <tr>
-                                            <th colspan="9"></th>
+                                            <th colspan="10"></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -234,9 +236,20 @@
                         <div class="modal-body p-0">
                             <div class="p-3">
                                 <label class="control-label">Nama Kegiatan</label>
-                                <input type="text" name="keg_nama" class="form-control" placeholder="Nama Jenis Kegiatan">
+                                <input type="text" name="keg_nama" class="form-control mb-2" placeholder="Nama Jenis Kegiatan" required>
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Nilai Kontrak</label>
+                                        <input type="text" name="nilai_kontrak" class="form-control nilaikontrak" placeholder="0" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label">OPD / Instansi</label>
+                                        <input type="text" name="opd" class="form-control" placeholder="OPD / Instansi" required>
+                                    </div>
+                                </div>
                                 <div class="row mt-2">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Mulai Pengerjaan</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fal fa-calendar-alt"></i></span>
@@ -244,23 +257,20 @@
                                             <input type="date" name="start" class="form-control datepicker" value="<?= date('Y-m-d');?>" data-provide="datepicker">
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Estimasi Selesai</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fal fa-calendar-check"></i></span>
                                             </div>
-                                            <input type="date" name="end" class="form-control datepicker" value="<?php $tlgNow = date("Y-m-d"); echo date('Y-m-d', strtotime( "$tlgNow +5 month" ));?>" data-provide="datepicker">
+                                            <input type="date" name="end" class="form-control datepicker" value="<?php $tlgNow = date("Y-m-d"); echo date('Y-m-d', strtotime( "$tlgNow +3 month" ));?>" data-provide="datepicker">
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button type="submit" class="btn btn-secondary btn-block" type="button"><i class="fal fa-plus mr-1"></i>Tambah</button>
                                     </div>
                                     <label class="text-muted text-xs ml-2">Format Tanggal Mulai & Selesai (<?= date('Y-m-d');?>)</label>
                                 </div>
-                                
+                                <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fal fa-list mr-1"></i> List Kegiatan</a>
+                                <button type="submit" class="btn btn-secondary btn-sm float-right" type="button"><i class="fal fa-plus mr-1"></i>Tambah</button>                                
                         </form>
-
-                                <a class="btn btn-primary btn-sm mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fal fa-list mr-1"></i> List Kegiatan</a>
                             </div>
                             <div class="collapse" id="collapseExample">
                                 <div class="table-responsive">
@@ -269,12 +279,13 @@
                                             <tr>
                                                 <th scope="col">!#</th>
                                                 <th scope="col">Nama Kegiatan</th>
-                                                <th scope="col">Tanggal</th>
-                                                <th scope="col">Aksi</th>
+                                                <th scope="col">Tgl Kegiatan</th>
+                                                <th scope="col">Nilai Kegiatan</th>
+                                                <th scope="col">OPD/Instansi</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
-                                        <tr class="bg-white"><td colspan="4"></td></tr>
+                                        <tr class="bg-white"><td colspan="6"></td></tr>
                                     </table>
                                 </div>
                             </div>
@@ -367,22 +378,21 @@
                             return meta.row + meta.settings._iDisplayStart + 1 + '.';
                         }  
                     },    
-                    {"data": "keg_nama" }, 
+                    {"data": "keg_nama",
+                        "render": 
+                        function( data, type, row, meta ) {
+                            return `<span class="d-inline-block text-truncate" style="max-width:150px;">
+                            ${row.keg_nama}</span>`;
+                        }
+                    }, 
                     {"data": "start",
                         "render": 
                         function( data, type, row, meta ) {
-                            return `${row.start} <i class="fal fa-exchange"></i> ${row.end}`;
+                            return `<span class="d-inline-block text-truncate" style="max-width:200px;">${row.start}<i class="fal fa-arrows-h"></i>${row.end}</span>`;
                         }
                     },
-                    {"class": "text-center", "data": "keg_id",
-                    "render": 
-                        function( data, type, row, meta ) {
-                            return `<form class="form-horizontal" method="post" action="<?php echo base_url().'admin/inputdata/del_kegiatan'?>">
-                                        <input name="kid" type="hidden" value="${row.keg_id}">
-                                        <button type="submit" class="btn btn-danger btn-xs"><i class="fal fa-trash-alt mr-1"></i>Hapus</button>
-                                    </form>`;
-                        }
-                    },
+                    {"data": "nilai_kontrak", render: $.fn.dataTable.render.number( ',', '.', 0 ,'Rp.' )},
+                    {"data": "opd" },
                 ],
 			}).buttons().container().appendTo('#pekerjaan_wrapper .col-ms-6:eq(0)');
 		});
@@ -396,6 +406,14 @@
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 0
             });
+        });
+        $('input.nilaikontrak').on('input', function() {
+            const value = this.value.replace(/[^\d]/g,"");
+            this.value = parseFloat(value).toLocaleString('en-US', {
+                style: 'decimal',
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 0,
+            });        
         });
     </script>
     <script>
@@ -412,13 +430,13 @@
         
                     // Total over all pages
                     debet = api
-                        .column(6)
+                        .column(7)
                         .data()
                         .reduce(function (x, y) {
                             return intVal(x) + intVal(y);
                         }, 0);
                     kredit = api
-                        .column(7)
+                        .column(8)
                         .data()
                         .reduce(function (x, y) {
                             return intVal(x) + intVal(y);
@@ -427,8 +445,8 @@
                     // Update footer
                     var numFormat = $.fn.dataTable.render.number( ',', '.', 0 ,'Rp.' ).display;
                     $( api.column( 2 ).footer() ).html(numFormat((debet)-(kredit))); 
-                    $( api.column( 6 ).footer() ).html(numFormat(debet));
-                    $( api.column( 7 ).footer() ).html(numFormat(kredit));
+                    $( api.column( 7 ).footer() ).html(numFormat(debet));
+                    $( api.column( 8 ).footer() ).html(numFormat(kredit));
                 },
                 "processing": true,
                 "responsive":true,
@@ -468,7 +486,7 @@
                     {"data": "pembukuan_ket",
                     "render": 
                         function( data, type, row, meta ) {
-                            return `<span class="d-inline-block text-truncate" style="max-width:200px;">
+                            return `<span class="d-inline-block text-truncate" style="max-width:150px;">
                             ${row.pembukuan_ket}</span>`;
                         }
                     },
@@ -476,10 +494,11 @@
                     {"data": "keg_nama",
                         "render": 
                         function( data, type, row, meta ) {
-                            return `<span class="d-inline-block text-truncate" style="max-width:200px;">
+                            return `<span class="d-inline-block text-truncate" style="max-width:150px;">
                             ${row.keg_nama}</span>`;
                         }
                     },
+                    {"data": "opd" },
                     {"class": "bg-succsoft text-right", "data": "pembukuan_masuk", render: $.fn.dataTable.render.number( ',', '.', 0 ,'Rp.' )},
                     {"class": "bg-warsoft text-right", "data": "pembukuan_keluar", render: $.fn.dataTable.render.number( ',', '.', 0 ,'Rp.' )},
                     {"class": "text-center", "data": "pembukuan_id",

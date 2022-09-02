@@ -37,14 +37,17 @@ class Inputdata extends CI_Controller{
 		$this->form_validation->set_rules("keg_nama", "Kegiatan", "required");
         $this->form_validation->set_rules("start", "Muali", "required");
         $this->form_validation->set_rules("end", "Selesai", "required");
+        $this->form_validation->set_rules("nilai_kontrak", "Nilai Kontrak", "required");
+        $this->form_validation->set_rules("opd", "OPD", "required");
 		if($this->form_validation->run() != false) {
-		
 			$kdata = [
                     'keg_nama' => htmlspecialchars($this->input->post("keg_nama", TRUE) ,ENT_QUOTES),
                     'start' => htmlspecialchars($this->input->post("start", TRUE) ,ENT_QUOTES),
                     'end' => htmlspecialchars($this->input->post("end", TRUE) ,ENT_QUOTES),
+                    'nilai_kontrak' => htmlspecialchars($this->input->post("nilai_kontrak", TRUE) ,ENT_QUOTES),
+                    'opd' => htmlspecialchars($this->input->post("opd", TRUE) ,ENT_QUOTES),
 				];
-
+            
 			$this->db->insert("tbl_kegiatan", $kdata);
 			$this->session->set_flashdata("success"," Berhasil Tambah Data ! ");
 			if($this->input->get('kasir') == 'retail'){
@@ -84,7 +87,7 @@ class Inputdata extends CI_Controller{
        
     function data(){
         $query  = "SELECT * FROM tbl_pembukuan LEFT JOIN tbl_pelanggan ON tbl_pembukuan.pelanggan_id=tbl_pelanggan.id LEFT JOIN tbl_kegiatan ON tbl_pembukuan.kegiatan=tbl_kegiatan.keg_id";
-		$search = array('pembukuan_id','pembukuan_nama','pembukuan_ket','pelanggan_id','pembukuan_masuk','pembukuan_keluar','pembukuan_tgl','nama','keg_nama');
+		$search = array('pembukuan_id','pembukuan_nama','pembukuan_ket','pelanggan_id','pembukuan_masuk','pembukuan_keluar','pembukuan_tgl','nama','keg_nama','nilai_kontrak','opd');
 		header('Content-Type: application/json');
         $where  = null;
         $isWhere = null;
@@ -93,7 +96,7 @@ class Inputdata extends CI_Controller{
 
     function kegiatan(){
         $query  = "SELECT * FROM tbl_kegiatan";
-		$search = array('keg_id','keg_nama','start','end');
+		$search = array('keg_id','keg_nama','start','end','nilai_kontrak','opd');
 		header('Content-Type: application/json');
         $where  = null;
         $isWhere = null;
