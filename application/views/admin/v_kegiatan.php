@@ -94,7 +94,14 @@
             </div>
         </div>
     </div>
-
+    <!-- ============ MODAL EDIT =============== -->
+    <div id="modalEdit" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal-dialog modal-centered">
+            <div class="modal-content" id="ubah-content">
+            
+            </div>
+        </div>
+    </div>
     <!-- ============ MODAL HAPUS =============== -->
     <div id="modalHapus" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -103,7 +110,15 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $('#pekerjaan tbody').on('click', '.ubah', function(){
+            var keg_id = $(this).attr('data-id');
+            $('#modalEdit').modal('show');
+            $.ajax({url:"<?php echo base_url('admin/kegiatan/edit?tipe=edit&kid=');?>"+keg_id,success:function(html){
+                $("#ubah-content").html(html);
+            }});
+        });
+    </script>
     <script>
         $('#pekerjaan tbody').on('click', '.delete', function(){
             var keg_id = $(this).attr('data-id');
@@ -156,7 +171,9 @@
                     {"class": "text-center", "data": "keg_id",
                     "render": 
                         function( data, type, row, meta ) {
-                            return `<button class="btn btn-danger btn-xs delete" data-id="${row.keg_id}" title="Hapus"><i class="fal fa-trash-alt mr-1"></i> Hapus</button>`;
+                            return `<div class="btn-group">
+                            <button class="btn btn-success btn-xs ubah" data-id="${row.keg_id}" title="Edit"><i class="fal fa-sync-alt mr-1"></i>Edit</button>
+                            <button class="btn btn-danger btn-xs delete" data-id="${row.keg_id}" title="Hapus"><i class="fal fa-trash-alt mr-1"></i> Hapus</button></div>`;
                         }
                     },
                 ],

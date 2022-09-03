@@ -113,10 +113,6 @@ class Inputdata extends CI_Controller{
             $akel=str_replace(',', '', $this->input->post('akel'));
             $mkegid=$this->input->post('mkegid');
             $mtgl=$this->input->post('mtgl');
-            $this->form_validation->set_rules("verifikasi", "Verifikasi", "required");
-            $kverf = ['verifikasi' => htmlspecialchars($this->input->post("verifikasi", TRUE) ,ENT_QUOTES),];
-            $this->db->where('keg_id', (int)$this->input->post('keg_id'));
-            $this->db->update("tbl_kegiatan", $kverf);
             $this->m_inputdata->tambah_debet($aid,$anama,$aket,$mpid,$amas,$akel,$mkegid,$mtgl);
             echo $this->session->set_flashdata("berhasil"," Berhasil Tambah $anama ! ");
             redirect('admin/inputdata');

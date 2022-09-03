@@ -8,6 +8,6 @@
         <input name="kid" type="hidden" value="<?= $a['keg_id'];?>">
     </div>
     <div class="modal-footer bg-danger border-0 p-0">
-            <?php $hsl = $a['verifikasi']; if ($hsl < 1) {$p = '<button type="submit" class="btn btn-danger hapus btn-sm">Hapus</button>';}else{$p = '<span class="text-sm bg-danger text-center w-100 p-2">Sedang digunakan Tidak dapat Dihapus</span>';}$output= $p; echo $p;?>
+        <?php $hsl = $a['kegiatan']; if ($hsl < 1) {$p = '<button type="submit" class="btn btn-danger hapus btn-sm">Hapus</button>';}else{$p = '<span class="text-sm bg-danger text-center w-100 p-2">Sedang digunakan Tidak dapat Dihapus</span>';}$output= $p; echo $p;?>
     </div>
 </form>

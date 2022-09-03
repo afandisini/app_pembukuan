@@ -40,11 +40,41 @@ class Kegiatan extends CI_Controller{
                     'keg_nama' => htmlspecialchars($this->input->post("keg_nama", TRUE) ,ENT_QUOTES),
                     'start' => htmlspecialchars($this->input->post("start", TRUE) ,ENT_QUOTES),
                     'end' => htmlspecialchars($this->input->post("end", TRUE) ,ENT_QUOTES),
-                    'nilai_kontrak' => htmlspecialchars($this->input->post("nilai_kontrak", TRUE) ,ENT_QUOTES),
+                    'nilai_kontrak' => htmlspecialchars(str_replace(',', '', $this->input->post("nilai_kontrak", TRUE)) ,ENT_QUOTES),
                     'opd' => htmlspecialchars($this->input->post("opd", TRUE) ,ENT_QUOTES),
 				];
             
 			$this->db->insert("tbl_kegiatan", $kdata);
+			$this->session->set_flashdata("success"," Berhasil Tambah Data ! ");
+			if($this->input->get('kasir') == 'retail'){
+				redirect(base_url("admin/kegiatan"));
+			}else{
+				redirect(base_url("admin/kegiatan"));
+			}
+		}else{
+			$this->session->set_flashdata("failed"," Gagal Tambah Data ! ".validation_errors());
+			redirect(base_url("admin/kegiatan"));
+		}
+	}
+
+	function keg_edit()
+	{   
+		$this->form_validation->set_rules("keg_nama", "Kegiatan", "required");
+        $this->form_validation->set_rules("start", "Muali", "required");
+        $this->form_validation->set_rules("end", "Selesai", "required");
+        $this->form_validation->set_rules("nilai_kontrak", "Nilai Kontrak", "required");
+        $this->form_validation->set_rules("opd", "OPD", "required");
+		if($this->form_validation->run() != false) {
+			$edata = [
+                    'keg_nama' => htmlspecialchars($this->input->post("keg_nama", TRUE) ,ENT_QUOTES),
+                    'start' => htmlspecialchars($this->input->post("start", TRUE) ,ENT_QUOTES),
+                    'end' => htmlspecialchars($this->input->post("end", TRUE) ,ENT_QUOTES),
+                    'nilai_kontrak' => htmlspecialchars(str_replace(',', '', $this->input->post("nilai_kontrak", TRUE)) ,ENT_QUOTES),
+                    'opd' => htmlspecialchars($this->input->post("opd", TRUE) ,ENT_QUOTES),
+				];
+            
+			$this->db->where('keg_id', (int)$this->input->post('keg_id'));
+			$this->db->update("tbl_kegiatan", $edata);
 			$this->session->set_flashdata("success"," Berhasil Tambah Data ! ");
 			if($this->input->get('kasir') == 'retail'){
 				redirect(base_url("admin/kegiatan"));
@@ -68,7 +98,7 @@ class Kegiatan extends CI_Controller{
 
     function edit()
 	{
-		$query  = "SELECT * FROM tbl_kegiatan";
+		$query  = "SELECT * FROM tbl_kegiatan LEFT JOIN tbl_pembukuan ON tbl_kegiatan.keg_id=tbl_pembukuan.kegiatan";
 		$kid = $this->input->get('kid');
 		$data['a'] = $this->db->query($query.' WHERE keg_id = ?',[$kid])->row_array();
 		$data['kegiatan']=$this->m_kategori->tampil_kegiatan();
