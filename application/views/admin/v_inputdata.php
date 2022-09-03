@@ -128,6 +128,7 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">IDR</span>
                                 </div>
+                                <input name="verifikasi" type="hidden" value="1">
                                 <input name="akel" type="hidden" value="0">
                                 <input name="amas" class="form-control duit" type="text" placeholder="Jumlah Pemasukan" required>
                             </div>
@@ -210,6 +211,7 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">IDR</span>
                                 </div>
+                                <input name="verifikasi" type="hidden" value="1">
                                 <input name="amas" type="hidden" value="0">
                                 <input name="akel" class="form-control duit" type="text" placeholder="Jumlah Pengeluaran" required>
                             </div>

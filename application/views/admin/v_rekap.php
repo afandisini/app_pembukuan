@@ -11,7 +11,7 @@
                     <?= alert_bs();?>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-sm-12">
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="card card-outline card-success">
                             <div class="card-header text-muted border-0">
                                 <h3 class="card-title"><i class="fal fa-chart-line mr-2 text-warning"></i> <?php echo isset($head) ? $head : ''; ?></h3>  
@@ -49,7 +49,7 @@
                                 </a>-->
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 text-sm">
+                    <div class="col-lg-6 col-sm-6 col-xs-12 text-sm">
                         <div class="card card-outline card-danger">
                             <div class="card-header text-muted border-0">  
                                 <div class="card-tools">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-12 text-sm">
+                    <!--<div class="col-lg-3 col-sm-12 text-sm">
                         <div class="card card-outline card-danger">
                             <div class="card-header text-muted border-0">  
                                 <div class="card-tools">
@@ -115,7 +115,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 
                 <div class="col-lg-12 col-sm-12">
@@ -135,10 +135,11 @@
                                         <thead>
                                             <tr class="bg-light">
                                                 <th>No</th>
-                                                <th>Nama</th>
+                                                <th>Tanggal</th>
+                                                <th>Jenis Input</th>
                                                 <th>Keterangan</th>
-                                                <th>Kegiatan</th>
-                                                <th>Rekan</th>
+                                                <th>Nama Kegiatan</th>
+                                                <th>Dari/Untuk</th>
                                                 <th class="text-right">Debet</th>
                                                 <th class="text-right">Kredit</th>
                                             </tr>
@@ -150,12 +151,15 @@
                                                         <?php if(isset($no)){ echo $no; }else{ echo ' '; } ?>
                                                     </td>
                                                     <td>
+                                                        <?php if(isset($k->pembukuan_tgl)){ echo $k->pembukuan_tgl; }else{ echo ' '; } ?>
+                                                    </td>
+                                                    <td>
                                                         <?php if(isset($k->pembukuan_nama)){ echo $k->pembukuan_nama; }else{ echo ' '; } ?>
                                                     </td>
-                                                    <td class="d-inline-block text-truncate" style="max-width: 150px;">
+                                                    <td class="d-inline-block text-truncate" style="max-width: 200px;">
                                                         <?php if(isset($k->pembukuan_ket)){ echo $k->pembukuan_ket; }else{ echo ' '; } ?>
                                                     </td>
-                                                    <td class="text-truncate" style="max-width: 150px;">
+                                                    <td class="text-truncate" style="max-width: 200px;">
                                                         <?php if(isset($k->keg_nama)){ echo $k->keg_nama; }else{ echo '-'; } ?>
                                                     </td>
                                                     <td>
@@ -177,12 +181,14 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
+                                                <th></th>
                                                 <th class="text-right"><?php if(isset($masuk->msk)){ echo 'Rp ' .number_format($masuk->msk); }else{ echo ''; } ?>
                                                 </th>
                                                 <th class="text-right"><?php if(isset($keluar->klr)){ echo 'Rp ' .number_format($keluar->klr);  }else{ echo ''; }?>
                                                 </th>
                                             </tr>
                                             <tr class="text-right">
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
