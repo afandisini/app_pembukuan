@@ -38,15 +38,16 @@
             </div>
         </section>
     </div>
-   
+    
+    <!-- ============ MODAL ADD =============== -->
     <div class="modal fade" id="kegiatan" data-backdrop="static" role="dialog" aria-labelledby="akun" aria-hidden="true">
-        <div class="modal-dialog modal-center modal-lg">
+        <div class="modal-dialog modal-center">
             <div class="modal-content">
                 <div class="modal-header border-0">
                     <h5>Tambah Jenis Kegiatan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                        <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/inputdata/input'?>">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/kegiatan/input'?>">
                         <div class="modal-body p-0">
                             <div class="p-3">
                                 <label class="control-label">Nama Kegiatan</label>
@@ -81,15 +82,13 @@
                                         </div>
                                     </div>
                                     <label class="text-muted text-xs ml-2">Format Tanggal Mulai & Selesai (<?= date('Y-m-d');?>)</label>
-                                </div>
-                                <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fal fa-list mr-1"></i> List Kegiatan</a>
-                                <button type="submit" class="btn btn-secondary btn-sm float-right" type="button"><i class="fal fa-plus mr-1"></i>Tambah</button>                                
-                        </form>
-                            </div>
-                            <div class="collapse" id="collapseExample">
-                                
+                                </div>                               
                             </div>
                         </div>
+                        <div class="modal-footer border-0">
+                                <button type="submit" class="btn btn-success btn-sm" type="button">simpan</button> 
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -141,10 +140,14 @@
             "serverSide": true,
             "ordering": true,
 			language: {url: '<?= base_url('assets/id.json');?>'},
-			dom: 'frtip',
-			buttons: [
-                    {extend: 'print', text:'<i class="fal fa-print text-white mr-2"></i> Cetak', className: 'btn btn-success btn-sm text-white ml-4', pageSize: 'A4',footer: true}
-                ],
+			dom: 'Bfrtip',
+			lengthMenu: [
+                [ 10, 25, 50, 999999 ],
+                [ '10 baris', '25 baris', '50 baris', 'Semua' ]
+            ],
+            buttons: [
+                {extend: 'pageLength', text:'<i class="fal fa-list mr-2"></i> <span class="mr-2">Tampilkan</span>', className: 'btn btn-primary btn-sm', footer: true},{text:'<i class="far fa-plus mr-1"></i> Kegiatan', className: 'btn btn-warning btn-sm keg', action: function (e, node, config){$('#kegiatan').modal('show')}},
+            ],
             "order": [[ 0, 'desc' ]], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
             "ajax":
             {
