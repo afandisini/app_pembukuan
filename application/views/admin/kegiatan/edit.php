@@ -21,7 +21,11 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp.</span>
                             </div>
-                            <input type="text" name="nilai_kontrak" class="form-control nilaikontrak" value="<?= number_format($nilai_kontrak);?>" required>
+                            <?php if (!empty($nilai_kontrak)) { ?>
+                                <input type="text" name="nilai_kontrak" class="form-control nilaikontrak" value="<?= number_format($nilai_kontrak);?>" required>
+                            <?php } else { ?>
+                                <input type="text" name="nilai_kontrak" class="form-control nilaikontrak" value="0" required>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="col-sm-6">
