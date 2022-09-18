@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'?>">
-    <!--<link rel="stylesheet" href="<//?php echo base_url().'assets/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'?>">-->
     <?php if($menu == 'inputdata'){ ?>
     <?php } else { ?><?php } ?>
     <?php $this->load->view("admin/part/app") ?>

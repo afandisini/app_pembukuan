@@ -66,7 +66,7 @@
             <div class="modal-content card-outline card-success">
                 <div class="modal-header border-0">
                     <h5><?php echo isset($pmasuk) ? $pmasuk : ''; ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form class="form-horizontal" method="post" 
                     action="<?php echo base_url().'admin/inputdata/tambah_debet'?>">

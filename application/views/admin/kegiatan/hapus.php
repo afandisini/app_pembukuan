@@ -1,5 +1,6 @@
 <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/kegiatan/del_kegiatan'?>">
-<div class="modal-header border-0">
+<?php $hsl = $a['kegiatan']; if ($hsl < 1) { ?>
+    <div class="modal-header border-0">
         <h5>Hapus Data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     </div>
@@ -8,6 +9,18 @@
         <input name="kid" type="hidden" value="<?= $a['keg_id'];?>">
     </div>
     <div class="modal-footer bg-danger border-0 p-0">
-        <?php $hsl = $a['kegiatan']; if ($hsl < 1) {$p = '<button type="submit" class="btn btn-danger hapus btn-sm">Hapus</button>';}else{$p = '<span class="text-sm bg-danger text-center w-100 p-2">Sedang digunakan Tidak dapat Dihapus</span>';}$output= $p; echo $p;?>
+        <button type="submit" class="btn btn-danger hapus btn-sm">Hapus</button>
     </div>
+<?php } else { ?>
+    <div class="modal-header border-0">
+        <h6>Hapus Data</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body text-center mb-3">
+        <p>
+            Maaf... Tidak dapat Menghapus kegiatan <strong><?= $a['keg_nama']; ?></strong>
+            <span class="text-danger">Data Kegiatan Sedang Digunakan!</span>
+        </p>
+    </div>
+<?php } ?>
 </form>

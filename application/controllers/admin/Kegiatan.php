@@ -132,4 +132,17 @@ class Kegiatan extends CI_Controller{
 			echo "Halaman tidak ditemukan";
 		}
 	}
+
+	function delete_data($id)
+		{
+			if( $this->session->userdata('akses')=='1'){
+				$this->db->where('tbl_kegiatan.keg_id=tbl_pembukuan.kegiatan');
+				$this->db->where('tbl_barang.barang_keg_id=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_jurnal.kategori_id=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_kegiatan.keg_id',$id);
+				$this->db->delete(array('pemohon','user','peserta'));
+			}else{
+				echo "Halaman tidak ditemukan";
+			}
+		}
 }
