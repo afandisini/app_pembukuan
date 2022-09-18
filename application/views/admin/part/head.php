@@ -35,4 +35,4 @@
     <?php } else { ?><?php } ?>
     <?php $this->load->view("admin/part/app") ?>
 </head>
-<?php if($menu == 'penggunaan'){echo '<body onload="jam()" class="hold-transition layout-fixed layout-navbar-fixed sidebar-collapse">';}else{ echo '<body class="hold-transition layout-fixed layout-navbar-fixed sidebar-collapse sidebar-mini-xs">';}?>
+<?php if($menu == 'penggunaan'){echo '<body onload="jam()" class="hold-transition layout-fixed layout-navbar-fixed sidebar-collapse text-sm">';}else{ echo '<body class="hold-transition layout-fixed layout-navbar-fixed sidebar-collapse sidebar-mini-xs text-sm">';}?>

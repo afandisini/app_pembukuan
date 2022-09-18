@@ -133,14 +133,19 @@ class Kegiatan extends CI_Controller{
 		}
 	}
 
-	function delete_data($id)
+	function delete_all($id)
 		{
 			if( $this->session->userdata('akses')=='1'){
 				$this->db->where('tbl_kegiatan.keg_id=tbl_pembukuan.kegiatan');
 				$this->db->where('tbl_barang.barang_keg_id=tbl_kegiatan.keg_id');
-				$this->db->where('tbl_jurnal.kategori_id=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_jurnal.kegiatan=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_jual.kag_id=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_detail_jual.kegiatan_id=tbl_kegiatan.keg_id');
+				$this->db->where('tbl_piutang.kegiatan_id=tbl_kegiatan.keg_id');
 				$this->db->where('tbl_kegiatan.keg_id',$id);
-				$this->db->delete(array('pemohon','user','peserta'));
+				$this->db->delete(array('tbl_kegiatan.keg_id','tbl_pembukuan.kegiatan','tbl_barang.barang_keg_id','tbl_jurnal.kegiatan','tbl_jual.kag_id','tbl_detail_jual.kegiatan_id','tbl_piutang.kegiatan_id'));
+				echo $this->session->set_flashdata("hapus"," Berhasil Hapus Data ! ");
+            		redirect('admin/kegiatan');
 			}else{
 				echo "Halaman tidak ditemukan";
 			}

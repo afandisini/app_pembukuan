@@ -504,8 +504,8 @@ $config['time_reference'] = 'local';
 | 
 | 
 */
-$config['nama_app'] = 'Flashretail';
-$config['versi'] = 'v2.33 Pro';
+$config['nama_app'] = 'iTsoluions';
+$config['versi'] = 'v2.45 Pro';
 $config['pembuatan'] = '<i class="fal fa-copyright mr-1"></i> 2010-' . date('Y');
 
 /*
